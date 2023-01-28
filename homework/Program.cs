@@ -10,7 +10,7 @@
 // 9 5 3 2
 // 8 4 4 2
 
-int[,] myArray = GetArray(3, 4);
+/*int[,] myArray = GetArray(3, 4);
 Console.WriteLine("Массив ДО сортировки по убыванию:");
 PrintArray(myArray);
 Console.WriteLine("----------------------------------------");
@@ -20,7 +20,7 @@ PrintArray(myArray);
 Console.WriteLine("----------------------------------------");
 Console.Write("Для продолжения нажмите 'Enter': ");
 Console.ReadLine();
-Console.Clear();
+Console.Clear();*/
 //------------------------------------------------------------------------------------
 
 // Задача 56:
@@ -36,7 +36,7 @@ Console.Clear();
 // Программа считает сумму элементов в каждой строке
 // и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-int[,] myArray2 = GetArray(4, 4);
+/*int[,] myArray2 = GetArray(4, 4);
 Console.WriteLine("Ваш массив: ");
 PrintArray(myArray2);
 Console.WriteLine("----------------------------------------");
@@ -47,7 +47,7 @@ FindMinStringSum(myArray2);
 Console.WriteLine("----------------------------------------");
 Console.Write("Для продолжения нажмите 'Enter': ");
 Console.ReadLine();
-Console.Clear();
+Console.Clear();*/
 //------------------------------------------------------------------------------------
 
 // Задача 58:
@@ -60,7 +60,7 @@ Console.Clear();
 // 18 20
 // 15 18
 
-int[,] myArray3 = GetArray(2, 2);
+/*int[,] myArray3 = GetArray(2, 2);
 int[,] myArray4 = GetArray(2, 2);
 Console.WriteLine("Первая матрица: ");
 Console.WriteLine();
@@ -77,7 +77,21 @@ PrintArray(myArray5);
 Console.WriteLine("----------------------------------------");
 Console.Write("Для продолжения нажмите 'Enter': ");
 Console.ReadLine();
-Console.Clear();
+Console.Clear();*/
+//------------------------------------------------------------------------------------
+
+// Задача 60:
+// Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
+// Напишите программу, которая будет построчно выводить массив,
+// добавляя индексы каждого элемента.
+// Массив размером 2 x 2 x 2
+// 66(0,0,0) 25(0,1,0)
+// 34(1,0,0) 41(1,1,0)
+// 27(0,0,1) 90(0,1,1)
+// 26(1,0,1) 55(1,1,1)
+
+int[,,] myArray6 = GetXYZArray(2, 2, 2);
+PrintXYZArray(myArray6);
 //=======================================МЕТОДЫ=======================================
 
 // СОЗДАЕТ ДВУМЕРНЫЙ МАССИВ                                                           (В задаче ==> 1, 2, 3)
@@ -89,6 +103,53 @@ int[,] GetArray(int n, int m){
         }
     }
     return array;
+}
+//------------------------------------------------------------------------------------
+
+// СОЗДАЕТ ТРЕХМЕРНЫЙ(МНОГОМЕРНЫЙ) МАССИВ БЕЗ ПОВТОРЯЮЩИХСЯ                           (В задаче ==> 4)
+// ЗНАЧЕНИЙ, ЕСЛИ ЗАДАТЬ МАССИВУ КОЛЛИЧЕСТВО ЭЛЕМЕНТОВ
+// БОЛЬШЕ 99, ТО ЦИКЛ БУДЕТ РАБОТАТЬ БЕСКОНЕЧНО, ТАК КАК
+// БУДЕТ ПОСТОЯННО ИСКАТЬ ЧИСЛО КОТОРОЕ НЕ ПОВТОРЯЕТСЯ!
+int[,,] GetXYZArray(int x, int y, int z){
+    int[,,] array = new int[x, y, z];
+    string numbers = "";
+    int count = 0;
+    for(int i = 0; i < array.GetLength(0); i++){
+        for(int j = 0; j < array.GetLength(1); j++){
+            for(int k = 0; k < array.GetLength(2); k++){
+                array[i, j, k] = new Random().Next(1, 100);
+                string foundNumber = Convert.ToString(array[i, j, k]);
+                if(count > 0){
+                bool flag = true;
+                while(flag){  // тут начинается проверка на индивидуальность только что созданного числа
+                    if(numbers.Contains(foundNumber)){// если такое число уже есть, то оно перезапишется
+                        array[i, j, k] = new Random().Next(1, 100);
+                        foundNumber = Convert.ToString(array[i, j, k]);
+                    }
+                    else{ // если число не повторяется, то мы выйдем из цикла перезаписи числа
+                        flag = false;
+                    }
+                } 
+                }
+                numbers += (Convert.ToString(array[i, j, k]) + ","); // а тут хранятся все числа массива
+                count++;
+            }
+        }
+    }
+    return array;
+}
+//------------------------------------------------------------------------------------
+
+//ПЕЧАТАЕТ ТРЕХМЕРНЫЙ(МНОГОМЕРНЫЙ) МАССИВ НА ЭКРАН                                    (В задаче ==> 4)
+void PrintXYZArray(int[,,] array){
+    for(int i = 0; i < array.GetLength(0); i++){
+        for(int j = 0; j < array.GetLength(1); j++){
+            for(int k = 0; k < array.GetLength(2); k++){
+                Console.Write($"{array[i, j, k]} ");
+            }
+            Console.WriteLine();
+        }
+    }
 }
 //------------------------------------------------------------------------------------
 
@@ -214,3 +275,4 @@ int[,] ProductOfTwoMatrices(int[,] array1, int[,] array2){
     return resultArray;
 }
 //------------------------------------------------------------------------------------
+
