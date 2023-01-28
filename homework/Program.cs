@@ -186,13 +186,13 @@ void FindMinStringSum(int[,] array){
 //В ПОДРОБНОСТИ КОДА НЕ ВДАВАЙТЕСЬ, ВСЕ РАВНО НИЧЕГО НЕ ПОЙМЕТЕ))) ХЕ-ХЕ
 int[,] ProductOfTwoMatrices(int[,] array1, int[,] array2){
     int[,] resultArray = new int[array1.GetLength(0), array1.GetLength(1)];
-    int matrixMulti = 0;
-    int count = 0;
-    int rows = 0;
-    int column = 0;
-    int supportive = 0;
-    int supportive2 = 0;
-    bool flag = false;
+    int matrixMulti = 0;   // тут сумма произведений
+    int count = 0;         // число иттераций 
+    int rows = 0;          // нужно для махинаций с индексами
+    int column = 0;        // тоже самое (для махинаций)
+    int supportive = 0;    // для корректной работы после 3й итерации
+    int supportive2 = 0;   // для корректной работы после 2й итерации
+    bool flag = false;     // для корректной работы с индексами после 2й итерации
     while(count < array1.GetLength(0) + array1.GetLength(1)){
         for(int i = 0; i < array1.GetLength(0); i++){
             for(int j = 0; j < array1.GetLength(0); j++){
