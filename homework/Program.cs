@@ -10,7 +10,11 @@
 // 9 5 3 2
 // 8 4 4 2
 
-/*int[,] myArray = GetArray(3, 4);
+Console.WriteLine("Задача №54:");
+Console.WriteLine("Напишите программу,");
+Console.WriteLine("которая упорядочит по убыванию элементы каждой строки двумерного массива.");
+Console.WriteLine();
+int[,] myArray = GetArray(3, 4);
 Console.WriteLine("Массив ДО сортировки по убыванию:");
 PrintArray(myArray);
 Console.WriteLine("----------------------------------------");
@@ -20,7 +24,7 @@ PrintArray(myArray);
 Console.WriteLine("----------------------------------------");
 Console.Write("Для продолжения нажмите 'Enter': ");
 Console.ReadLine();
-Console.Clear();*/
+Console.Clear();
 //------------------------------------------------------------------------------------
 
 // Задача 56:
@@ -36,7 +40,11 @@ Console.Clear();*/
 // Программа считает сумму элементов в каждой строке
 // и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-/*int[,] myArray2 = GetArray(4, 4);
+Console.WriteLine("Задача №56:");
+Console.WriteLine("Напишите программу,");
+Console.WriteLine("которая будет находить строку с наименьшей суммой элементов.");
+Console.WriteLine();
+int[,] myArray2 = GetArray(4, 4);
 Console.WriteLine("Ваш массив: ");
 PrintArray(myArray2);
 Console.WriteLine("----------------------------------------");
@@ -47,7 +55,7 @@ FindMinStringSum(myArray2);
 Console.WriteLine("----------------------------------------");
 Console.Write("Для продолжения нажмите 'Enter': ");
 Console.ReadLine();
-Console.Clear();*/
+Console.Clear();
 //------------------------------------------------------------------------------------
 
 // Задача 58:
@@ -60,7 +68,11 @@ Console.Clear();*/
 // 18 20
 // 15 18
 
-/*int[,] myArray3 = GetArray(2, 2);
+Console.WriteLine("Задача №58:");
+Console.WriteLine("Напишите программу,");
+Console.WriteLine("которая будет находить произведение двух матриц.");
+Console.WriteLine();
+int[,] myArray3 = GetArray(2, 2);
 int[,] myArray4 = GetArray(2, 2);
 Console.WriteLine("Первая матрица: ");
 Console.WriteLine();
@@ -77,7 +89,7 @@ PrintArray(myArray5);
 Console.WriteLine("----------------------------------------");
 Console.Write("Для продолжения нажмите 'Enter': ");
 Console.ReadLine();
-Console.Clear();*/
+Console.Clear();
 //------------------------------------------------------------------------------------
 
 // Задача 60:
@@ -90,7 +102,11 @@ Console.Clear();*/
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-/*Console.WriteLine("Многомерный массив с индексами элементов: ");
+Console.WriteLine("Задача №60:");
+Console.WriteLine("Напишите программу, которая будет построчно выводить массив,");
+Console.WriteLine("добавляя индексы каждого элемента.");
+Console.WriteLine();
+Console.WriteLine("Многомерный массив с индексами элементов: ");
 Console.WriteLine("Значения элементов массива не повторяются!! ");
 Console.WriteLine();
 int[,,] myArray6 = GetXYZArray(2, 2, 2);
@@ -98,7 +114,7 @@ PrintXYZArray(myArray6);
 Console.WriteLine("----------------------------------------");
 Console.Write("Для продолжения нажмите 'Enter': ");
 Console.ReadLine();
-Console.Clear();*/
+Console.Clear();
 //------------------------------------------------------------------------------------
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
@@ -108,9 +124,13 @@ Console.Clear();*/
 // 11 16 15 06
 // 10 09 08 07
 
-Console.WriteLine("Введите количество строк массива: ");
+Console.WriteLine("Задача №62:");
+Console.WriteLine("Напишите программу,");
+Console.WriteLine("которая заполнит спирально массив 4 на 4.");
+Console.WriteLine();
+Console.Write("Введите количество строк массива: ");
 int rows = int.Parse(Console.ReadLine()!);
-Console.WriteLine("Введите количество столбцов массива: ");
+Console.Write("Введите количество столбцов массива: ");
 int column = int.Parse(Console.ReadLine()!);
 Console.Clear();
 int [,] myArray7 = new int[rows, column];
@@ -122,82 +142,13 @@ Console.WriteLine("После заполнения числами змейкой
 Console.WriteLine();
 SnakeArray(myArray7);
 PrintArray(myArray7);
+Console.WriteLine("----------------------------------------");
+Console.Write("Для завершения нажмите 'Enter': ");
+Console.ReadLine();
+Console.Clear();
+//------------------------------------------------------------------------------------
+//====================================================================================
 //=======================================МЕТОДЫ=======================================
-
-void SnakeArray(int[,] array){
-    int rows = 0;
-    int column = 0;
-    int rowsCount = array.GetLength(0);
-    int columnCount = array.GetLength(1);
-    bool right = true;
-    bool down = false;
-    bool left = false;
-    bool up = false;
-    int value = 1;
-    int count = 0;
-    array[rows, column] = value;
-    for(int i = 0; i < (array.GetLength(0) * array.GetLength(1)); i++){
-        if(right){
-            while(count < columnCount){
-                array[rows, column] = value;
-                value++;
-                column++;
-                count++;
-            }
-            down = true;
-            right = false;
-            column--;
-            rowsCount--;
-            rows++; 
-            count = 0;
-        }
-        if(down){
-            while(count < rowsCount){
-                array[rows, column] = value;
-                value++;
-                rows++;
-                count++;
-            }
-            left = true;
-            down = false;
-            rows--;
-            column--;
-            columnCount--;  
-            count = 0;
-        }
-        if(left){
-             while(count < columnCount){
-                array[rows, column] = value;
-                value++;
-                column--;
-                count++;
-            }
-            up = true;
-            left = false;  
-            column++;   
-            rows--;   
-            rowsCount--;   
-            count = 0;
-        }
-        if(up){
-            while(count < rowsCount){
-                array[rows, column] = value;
-                value++;
-                rows--;
-                count++;
-            }
-            right = true;
-            up = false;
-            rows++;
-            column++;
-            columnCount--;
-            count = 0;
-        }
-    }
-}
-
-
-
 
 // СОЗДАЕТ ДВУМЕРНЫЙ МАССИВ                                                           (В задаче ==> 1, 2, 3)
 int[,] GetArray(int n, int m){
@@ -211,7 +162,7 @@ int[,] GetArray(int n, int m){
 }
 //------------------------------------------------------------------------------------
 
-// ПЕЧАТАЕТ ДВУМЕРНЫЙ МАССИВ                                                          (В задаче ==> 1, 2, 3)
+// ПЕЧАТАЕТ ДВУМЕРНЫЙ МАССИВ                                                          (В задаче ==> 1, 2, 3, 5)
 void PrintArray(int[,] array){
     for(int i = 0; i < array.GetLength(0); i++){
         for(int j = 0; j < array.GetLength(1); j++){
@@ -380,3 +331,78 @@ void PrintXYZArray(int[,,] array){
     }
 }
 //------------------------------------------------------------------------------------
+
+//МЕТОД КОТОРЫЙ ЗАПИСЫВАЕТ ЗНАЧЕНИЯ, ОТ 1 ДО N, В МАССИВ ЗМЕЙКОЙ                      (В задаче ==> 5)
+//МЕТОД УНИВЕРСАЛЕН
+//РАБОТАЕТ С ЛЮБЫМ КОЛИЧЕСТВОМ СТРОК И СТОЛБЦОВ
+void SnakeArray(int[,] array){
+    int rows = 0;
+    int column = 0;
+    int rowsCount = array.GetLength(0);
+    int columnCount = array.GetLength(1);
+    bool right = true;
+    bool down = false;
+    bool left = false;
+    bool up = false;
+    int value = 1;
+    int count = 0;
+    array[rows, column] = value;
+    for(int i = 0; i < (array.GetLength(0) * array.GetLength(1)); i++){
+        if(right){
+            while(count < columnCount){
+                array[rows, column] = value;
+                value++;
+                column++;
+                count++;
+            }
+            down = true;
+            right = false;
+            column--;
+            rowsCount--;
+            rows++; 
+            count = 0;
+        }
+        if(down){
+            while(count < rowsCount){
+                array[rows, column] = value;
+                value++;
+                rows++;
+                count++;
+            }
+            left = true;
+            down = false;
+            rows--;
+            column--;
+            columnCount--;  
+            count = 0;
+        }
+        if(left){
+             while(count < columnCount){
+                array[rows, column] = value;
+                value++;
+                column--;
+                count++;
+            }
+            up = true;
+            left = false;  
+            column++;   
+            rows--;   
+            rowsCount--;   
+            count = 0;
+        }
+        if(up){
+            while(count < rowsCount){
+                array[rows, column] = value;
+                value++;
+                rows--;
+                count++;
+            }
+            right = true;
+            up = false;
+            rows++;
+            column++;
+            columnCount--;
+            count = 0;
+        }
+    }
+}
