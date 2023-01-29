@@ -90,15 +90,114 @@ Console.Clear();*/
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-Console.WriteLine("Многомерный массив с индексами элементов: ");
+/*Console.WriteLine("Многомерный массив с индексами элементов: ");
+Console.WriteLine("Значения элементов массива не повторяются!! ");
 Console.WriteLine();
 int[,,] myArray6 = GetXYZArray(2, 2, 2);
 PrintXYZArray(myArray6);
 Console.WriteLine("----------------------------------------");
 Console.Write("Для продолжения нажмите 'Enter': ");
 Console.ReadLine();
+Console.Clear();*/
+//------------------------------------------------------------------------------------
+
+// Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+// Например, на выходе получается вот такой массив:
+// 01 02 03 04
+// 12 13 14 05
+// 11 16 15 06
+// 10 09 08 07
+
+Console.WriteLine("Введите количество строк массива: ");
+int rows = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введите количество столбцов массива: ");
+int column = int.Parse(Console.ReadLine()!);
 Console.Clear();
+int [,] myArray7 = new int[rows, column];
+Console.WriteLine("Пустой массив: ");
+Console.WriteLine();
+PrintArray(myArray7);
+Console.WriteLine("----------------------------------------");
+Console.WriteLine("После заполнения числами змейкой: ");
+Console.WriteLine();
+SnakeArray(myArray7);
+PrintArray(myArray7);
 //=======================================МЕТОДЫ=======================================
+
+void SnakeArray(int[,] array){
+    int rows = 0;
+    int column = 0;
+    int rowsCount = array.GetLength(0);
+    int columnCount = array.GetLength(1);
+    bool right = true;
+    bool down = false;
+    bool left = false;
+    bool up = false;
+    int value = 1;
+    int count = 0;
+    array[rows, column] = value;
+    for(int i = 0; i < (array.GetLength(0) * array.GetLength(1)); i++){
+        if(right){
+            while(count < columnCount){
+                array[rows, column] = value;
+                value++;
+                column++;
+                count++;
+            }
+            down = true;
+            right = false;
+            column--;
+            rowsCount--;
+            rows++; 
+            count = 0;
+        }
+        if(down){
+            while(count < rowsCount){
+                array[rows, column] = value;
+                value++;
+                rows++;
+                count++;
+            }
+            left = true;
+            down = false;
+            rows--;
+            column--;
+            columnCount--;  
+            count = 0;
+        }
+        if(left){
+             while(count < columnCount){
+                array[rows, column] = value;
+                value++;
+                column--;
+                count++;
+            }
+            up = true;
+            left = false;  
+            column++;   
+            rows--;   
+            rowsCount--;   
+            count = 0;
+        }
+        if(up){
+            while(count < rowsCount){
+                array[rows, column] = value;
+                value++;
+                rows--;
+                count++;
+            }
+            right = true;
+            up = false;
+            rows++;
+            column++;
+            columnCount--;
+            count = 0;
+        }
+    }
+}
+
+
+
 
 // СОЗДАЕТ ДВУМЕРНЫЙ МАССИВ                                                           (В задаче ==> 1, 2, 3)
 int[,] GetArray(int n, int m){
